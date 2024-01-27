@@ -1,5 +1,5 @@
 'use client';
-import { ThemeSwitcher } from '@next-skeleton/shared';
+import { LangSwitcher, ThemeSwitcher } from '@next-skeleton/shared';
 import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../store';
@@ -19,6 +19,7 @@ export const AffixContainer = () => {
   return (
     <Wrapper>
       <ThemeSwitcher colorTheme={colorTheme} onThemeChange={onThemeChange} />
+      <LangSwitcher  />
     </Wrapper>
   );
 };

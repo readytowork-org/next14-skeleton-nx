@@ -1,4 +1,4 @@
-import { Login } from '../../containers';
+import { Login } from '../../../containers';
 import React from 'react';
 
 const LoginPage = (): React.JSX.Element => {

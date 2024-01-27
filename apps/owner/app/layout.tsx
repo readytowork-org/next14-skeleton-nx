@@ -1,22 +1,11 @@
-import { roboto_mono } from '@next-skeleton/shared';
-import './global.css';
-import { Registry } from './Registry';
+import { ReactNode } from 'react';
 
-export const metadata = {
-  title: 'Skelton',
-  description: 'template repo',
+type Props = {
+  children: ReactNode;
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className={roboto_mono.variable}>
-      <body>
-        <Registry>{children}</Registry>
-      </body>
-    </html>
-  );
+// Since we have a `not-found.tsx` page on the root, a layout file
+// is required, even if it's just passing children through.
+export default function RootLayout({ children }: Props) {
+  return children;
 }
