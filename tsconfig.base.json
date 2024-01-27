@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@skeleton/shared": ["shared/src/index.ts"],
-      "@skeleton/shared/server": ["shared/src/server.ts"]
+      "@next-skeleton/shared": ["shared/src/index.ts"],
+      "@next-skeleton/shared/server": ["shared/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
