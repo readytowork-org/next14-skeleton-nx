@@ -7,6 +7,4 @@ export const StyledLoginFormWrapper = styled.section`
   border: 1px solid #1677ff;
   border-radius: 8px;
   padding: 1em;
-  .auth__form {
-  }
 `;

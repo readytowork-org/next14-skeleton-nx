@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { Input, Layout } from 'antd';
+import { Avatar, Flex, Layout, Typography } from 'antd';
 import { StyledLoginFormWrapper } from './login.style';
-import { Button } from '@next-skeleton/shared';
+import { Button, Input } from '@next-skeleton/shared';
 const { Content } = Layout;
 export const Login = (): React.JSX.Element => {
   return (
@@ -15,18 +15,31 @@ export const Login = (): React.JSX.Element => {
       }}
     >
       <StyledLoginFormWrapper>
-        <form className="auth__form">
-          <div className={'form__control'}>
+        <Flex vertical align="center">
+          <Avatar
+            src={
+              <img
+                src={
+                  'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
+                }
+                alt="avatar"
+              />
+            }
+          />
+          <Typography.Title level={3}>Sign in to your account</Typography.Title>
+        </Flex>
+        <Flex component={'form'} className="auth__form" vertical gap={10}>
+          <Flex className={'form__control'} vertical gap={8}>
             <label htmlFor="email">Email address</label>
-            <Input id="email" />
-          </div>
-          <div className={'form__control'}>
+            <Input id="email" size="large" />
+          </Flex>
+          <Flex className={'form__control'} vertical gap={8}>
             <label htmlFor="password">Password</label>
-            <Input id="password" />
+            <Input id="password" size="large" />
             <div>Forgot password?</div>
-          </div>
-          <Button block />
-        </form>
+          </Flex>
+          <Button block size="large" />
+        </Flex>
       </StyledLoginFormWrapper>
     </Content>
   );
