@@ -66,32 +66,24 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".eslintrc.json",
-        "hash": "17866138117546000433"
-      },
-      {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
+        "file": ".gitignore",
+        "hash": "5080812101192052549"
       },
       {
         "file": ".nx/cache/d/server-process.json",
         "hash": "9944419000413396730"
       },
       {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "235626400633494639"
-      },
-      {
-        "file": "README.md",
-        "hash": "4254268996457377507"
+        "file": ".eslintrc.json",
+        "hash": "17866138117546000433"
       },
       {
         "file": ".yarnrc",
         "hash": "6414922622098367488"
+      },
+      {
+        "file": "package.json",
+        "hash": "247096428996293287"
       },
       {
         "file": "yarn.lock",
@@ -102,24 +94,16 @@
         "hash": "16448050467312557263"
       },
       {
-        "file": ".gitignore",
-        "hash": "5080812101192052549"
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
       },
       {
-        "file": "nx.json",
-        "hash": "16883356815457363861"
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
       },
       {
         "file": ".editorconfig",
         "hash": "5443105041930014821"
-      },
-      {
-        "file": ".yarn/releases/yarn-1.22.19.cjs",
-        "hash": "4339254978497063728"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
       },
       {
         "file": "tsconfig.base.json",
@@ -130,8 +114,24 @@
         "hash": "12333515226966617182"
       },
       {
-        "file": "package.json",
-        "hash": "247096428996293287"
+        "file": "README.md",
+        "hash": "4254268996457377507"
+      },
+      {
+        "file": ".yarn/releases/yarn-1.22.19.cjs",
+        "hash": "4339254978497063728"
+      },
+      {
+        "file": "nx.json",
+        "hash": "16883356815457363861"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
       }
     ],
     "projectFileMap": {
@@ -225,7 +225,7 @@
         },
         {
           "file": "shared/src/utils/index.ts",
-          "hash": "8349019216989372255"
+          "hash": "8848418310416469092"
         },
         {
           "file": "shared/tsconfig.json",
@@ -234,6 +234,13 @@
         {
           "file": "shared/tsconfig.lib.json",
           "hash": "14501583329670895298"
+        },
+        {
+          "file": "shared/src/utils/fonts.ts",
+          "hash": "7130188748985952402",
+          "deps": [
+            "npm:next"
+          ]
         }
       ],
       "owner": [
@@ -247,10 +254,11 @@
         },
         {
           "file": "apps/owner/app/layout.tsx",
-          "hash": "9244370229526276842",
+          "hash": "16460645510747618217",
           "deps": [
             "npm:@ant-design/nextjs-registry",
-            "shared"
+            "shared",
+            "npm:antd"
           ]
         },
         {

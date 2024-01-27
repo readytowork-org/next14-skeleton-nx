@@ -10600,17 +10600,17 @@
       },
       {
         "source": "owner",
+        "target": "npm:antd",
+        "type": "static"
+      },
+      {
+        "source": "owner",
         "target": "npm:styled-components",
         "type": "static"
       },
       {
         "source": "owner",
         "target": "npm:react",
-        "type": "static"
-      },
-      {
-        "source": "owner",
-        "target": "npm:antd",
         "type": "static"
       },
       {
