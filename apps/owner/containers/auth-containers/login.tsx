@@ -1,12 +1,11 @@
 'use client';
 import React from 'react';
-import { Avatar, Flex, Layout, Typography } from 'antd';
+import { Avatar, Flex, Typography } from 'antd';
 import { Button, Input } from '@next-skeleton/shared';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ILoginFormInput, LoginFormInputSchema } from '../../types';
 import { StyledLoginFormWrapper } from './login.style';
-const { Content } = Layout;
 
 export const Login = (): React.JSX.Element => {
   const {
@@ -25,7 +24,7 @@ export const Login = (): React.JSX.Element => {
   };
 
   return (
-    <Content
+    <Flex
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -61,7 +60,12 @@ export const Login = (): React.JSX.Element => {
               control={control}
               render={({ field }) => (
                 <>
-                  <Input id="email" size="large" {...field} />
+                  <Input
+                    id="email"
+                    size="large"
+                    {...field}
+                    placeholder="email"
+                  />
                   {errors?.email && (
                     <Typography.Text type={'danger'}>
                       {errors?.email?.message}
@@ -78,7 +82,12 @@ export const Login = (): React.JSX.Element => {
               control={control}
               render={({ field }) => (
                 <>
-                  <Input id="password" size="large" {...field} />
+                  <Input
+                    id="password"
+                    size="large"
+                    {...field}
+                    placeholder="password"
+                  />
                   {errors?.password && (
                     <Typography.Text type={'danger'}>
                       {errors?.password?.message}
@@ -92,6 +101,6 @@ export const Login = (): React.JSX.Element => {
           <Button block size="large" htmlType="submit" />
         </Flex>
       </StyledLoginFormWrapper>
-    </Content>
+    </Flex>
   );
 };

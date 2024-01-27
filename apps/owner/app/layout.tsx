@@ -1,7 +1,6 @@
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { StyledComponentsRegistry, roboto_mono } from '@next-skeleton/shared';
+import { roboto_mono } from '@next-skeleton/shared';
 import './global.css';
-import { ConfigProvider } from 'antd';
+import { Registry } from './Registry';
 
 export const metadata = {
   title: 'Skelton',
@@ -14,19 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={roboto_mono.className}>
+    <html lang="en" className={roboto_mono.variable}>
       <body>
-        <AntdRegistry>
-          <ConfigProvider
-            theme={{
-              token: {
-                fontFamily: '',
-              },
-            }}
-          >
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </ConfigProvider>
-        </AntdRegistry>
+        <Registry>{children}</Registry>
       </body>
     </html>
   );

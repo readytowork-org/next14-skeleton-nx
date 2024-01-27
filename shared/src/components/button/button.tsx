@@ -1,11 +1,13 @@
 import { Button as AntdButton, ButtonProps as AntButtonProps } from 'antd';
 /* eslint-disable-next-line */
-export interface ButtonProps extends AntButtonProps {}
+export interface ButtonProps extends AntButtonProps {
+  btnText?: string;
+}
 
-export function Button(props: ButtonProps) {
+export function Button({ btnText, ...props }: ButtonProps) {
   return (
     <AntdButton type={'primary'} {...props}>
-      Button
+      {btnText || 'Button'}
     </AntdButton>
   );
 }

@@ -15,6 +15,7 @@
     "styled-components": "5.3.6",
     "tslib": "^2.3.0",
     "zod": "^3.22.4",
+    "zustand": "^4.5.0",
     "@nx/cypress": "17.2.8",
     "@nx/eslint": "17.2.8",
     "@nx/eslint-plugin": "17.2.8",
@@ -66,40 +67,16 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".gitignore",
-        "hash": "5080812101192052549"
+        "file": ".yarn/releases/yarn-1.22.19.cjs",
+        "hash": "4339254978497063728"
       },
       {
-        "file": ".nx/cache/d/server-process.json",
-        "hash": "9944419000413396730"
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
       },
       {
-        "file": ".eslintrc.json",
-        "hash": "17866138117546000433"
-      },
-      {
-        "file": ".yarnrc",
-        "hash": "6414922622098367488"
-      },
-      {
-        "file": "package.json",
-        "hash": "247096428996293287"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "18073003990765783479"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "16448050467312557263"
-      },
-      {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
+        "file": "nx.json",
+        "hash": "16883356815457363861"
       },
       {
         "file": ".editorconfig",
@@ -110,139 +87,51 @@
         "hash": "13875330328856949732"
       },
       {
+        "file": ".gitignore",
+        "hash": "5080812101192052549"
+      },
+      {
         "file": "jest.config.ts",
         "hash": "12333515226966617182"
+      },
+      {
+        "file": ".yarnrc",
+        "hash": "6414922622098367488"
       },
       {
         "file": "README.md",
         "hash": "4254268996457377507"
       },
       {
-        "file": ".yarn/releases/yarn-1.22.19.cjs",
-        "hash": "4339254978497063728"
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
       },
       {
-        "file": "nx.json",
-        "hash": "16883356815457363861"
+        "file": ".prettierignore",
+        "hash": "16448050467312557263"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "235626400633494639"
+        "file": ".eslintrc.json",
+        "hash": "17866138117546000433"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
       },
       {
         "file": ".prettierrc",
         "hash": "16267754514737964994"
+      },
+      {
+        "file": "package.json",
+        "hash": "17183591295598720277"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "15327996839536106962"
       }
     ],
     "projectFileMap": {
-      "shared": [
-        {
-          "file": "shared/.eslintrc.json",
-          "hash": "7388911630545237055"
-        },
-        {
-          "file": "shared/README.md",
-          "hash": "4177710660839030163"
-        },
-        {
-          "file": "shared/project.json",
-          "hash": "15373743491115553483"
-        },
-        {
-          "file": "shared/src/components/button/button.spec.tsx",
-          "hash": "3113427159981638380",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "shared/src/components/button/button.tsx",
-          "hash": "12319792924720068346",
-          "deps": [
-            "npm:antd"
-          ]
-        },
-        {
-          "file": "shared/src/components/checkbox/checkbox.spec.tsx",
-          "hash": "15215541356037511497",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "shared/src/components/checkbox/checkbox.tsx",
-          "hash": "11672943619947002895"
-        },
-        {
-          "file": "shared/src/components/index.ts",
-          "hash": "13198505205633508185"
-        },
-        {
-          "file": "shared/src/components/input/input.spec.tsx",
-          "hash": "6935492646402137776",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "shared/src/components/input/input.tsx",
-          "hash": "12235938844097167950",
-          "deps": [
-            "npm:antd"
-          ]
-        },
-        {
-          "file": "shared/src/index.ts",
-          "hash": "9114646933077253568"
-        },
-        {
-          "file": "shared/src/lib/hello-server.tsx",
-          "hash": "2397568674684759047"
-        },
-        {
-          "file": "shared/src/lib/shared.spec.tsx",
-          "hash": "2091165811499887938",
-          "deps": [
-            "npm:@testing-library/react"
-          ]
-        },
-        {
-          "file": "shared/src/lib/shared.tsx",
-          "hash": "7427848414811383096"
-        },
-        {
-          "file": "shared/src/server.ts",
-          "hash": "8912437808649717296"
-        },
-        {
-          "file": "shared/src/utils/StyledComponentsRegistry.tsx",
-          "hash": "4422837858457286383",
-          "deps": [
-            "npm:react",
-            "npm:next",
-            "npm:styled-components"
-          ]
-        },
-        {
-          "file": "shared/src/utils/index.ts",
-          "hash": "8848418310416469092"
-        },
-        {
-          "file": "shared/tsconfig.json",
-          "hash": "8794291623869404963"
-        },
-        {
-          "file": "shared/tsconfig.lib.json",
-          "hash": "14501583329670895298"
-        },
-        {
-          "file": "shared/src/utils/fonts.ts",
-          "hash": "7130188748985952402",
-          "deps": [
-            "npm:next"
-          ]
-        }
-      ],
       "owner": [
         {
           "file": "apps/owner/.eslintrc.json",
@@ -254,27 +143,41 @@
         },
         {
           "file": "apps/owner/app/layout.tsx",
-          "hash": "16460645510747618217",
+          "hash": "5936586515998215806",
           "deps": [
-            "npm:@ant-design/nextjs-registry",
-            "shared",
-            "npm:antd"
+            "shared"
+          ]
+        },
+        {
+          "file": "apps/owner/app/login/page.tsx",
+          "hash": "3327025521853803038",
+          "deps": [
+            "npm:react"
           ]
         },
         {
           "file": "apps/owner/app/page.tsx",
-          "hash": "8796036189739981220"
+          "hash": "4793992801132761708"
+        },
+        {
+          "file": "apps/owner/containers/affix-container.tsx",
+          "hash": "1825970623357075554",
+          "deps": [
+            "shared",
+            "npm:react",
+            "npm:styled-components"
+          ]
         },
         {
           "file": "apps/owner/containers/auth-containers/login.style.ts",
-          "hash": "11118578228083054294",
+          "hash": "18006970331768441587",
           "deps": [
             "npm:styled-components"
           ]
         },
         {
           "file": "apps/owner/containers/auth-containers/login.tsx",
-          "hash": "15616439563967227265",
+          "hash": "5265806404830848430",
           "deps": [
             "npm:react",
             "npm:antd",
@@ -285,7 +188,7 @@
         },
         {
           "file": "apps/owner/containers/index.ts",
-          "hash": "5785316931821780382"
+          "hash": "1576927573346821758"
         },
         {
           "file": "apps/owner/index.d.ts",
@@ -336,6 +239,24 @@
           "deps": [
             "npm:zod"
           ]
+        },
+        {
+          "file": "apps/owner/app/Registry.tsx",
+          "hash": "11179773028394455666",
+          "deps": [
+            "npm:react",
+            "npm:@ant-design/nextjs-registry",
+            "shared",
+            "npm:antd",
+            "npm:styled-components"
+          ]
+        },
+        {
+          "file": "apps/owner/store/index.ts",
+          "hash": "7200917920859703699",
+          "deps": [
+            "npm:zustand"
+          ]
         }
       ],
       "owner-e2e": [
@@ -378,6 +299,125 @@
         {
           "file": "apps/owner-e2e/tsconfig.json",
           "hash": "10740392072068377465"
+        }
+      ],
+      "shared": [
+        {
+          "file": "shared/.eslintrc.json",
+          "hash": "7388911630545237055"
+        },
+        {
+          "file": "shared/README.md",
+          "hash": "4177710660839030163"
+        },
+        {
+          "file": "shared/project.json",
+          "hash": "15373743491115553483"
+        },
+        {
+          "file": "shared/src/components/button/button.spec.tsx",
+          "hash": "3113427159981638380",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "shared/src/components/button/button.tsx",
+          "hash": "5517013583221775432",
+          "deps": [
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "shared/src/components/checkbox/checkbox.spec.tsx",
+          "hash": "15215541356037511497",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "shared/src/components/checkbox/checkbox.tsx",
+          "hash": "11672943619947002895"
+        },
+        {
+          "file": "shared/src/components/index.ts",
+          "hash": "12049918482132624725"
+        },
+        {
+          "file": "shared/src/components/input/input.spec.tsx",
+          "hash": "6935492646402137776",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "shared/src/components/input/input.tsx",
+          "hash": "12235938844097167950",
+          "deps": [
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "shared/src/components/theme-switcher/theme-switcher.spec.tsx",
+          "hash": "223106542845199228",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "shared/src/components/theme-switcher/theme-switcher.tsx",
+          "hash": "5677922075477906579"
+        },
+        {
+          "file": "shared/src/index.ts",
+          "hash": "9114646933077253568"
+        },
+        {
+          "file": "shared/src/lib/hello-server.tsx",
+          "hash": "2397568674684759047"
+        },
+        {
+          "file": "shared/src/lib/shared.spec.tsx",
+          "hash": "2091165811499887938",
+          "deps": [
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "shared/src/lib/shared.tsx",
+          "hash": "7427848414811383096"
+        },
+        {
+          "file": "shared/src/server.ts",
+          "hash": "8912437808649717296"
+        },
+        {
+          "file": "shared/src/utils/StyledComponentsRegistry.tsx",
+          "hash": "4422837858457286383",
+          "deps": [
+            "npm:react",
+            "npm:next",
+            "npm:styled-components"
+          ]
+        },
+        {
+          "file": "shared/src/utils/fonts.ts",
+          "hash": "5883175753878793473",
+          "deps": [
+            "npm:next"
+          ]
+        },
+        {
+          "file": "shared/src/utils/index.ts",
+          "hash": "8848418310416469092"
+        },
+        {
+          "file": "shared/tsconfig.json",
+          "hash": "8794291623869404963"
+        },
+        {
+          "file": "shared/tsconfig.lib.json",
+          "hash": "14501583329670895298"
         }
       ]
     }

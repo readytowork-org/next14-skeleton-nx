@@ -10026,6 +10026,15 @@
         "hash": "sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ=="
       }
     },
+    "npm:use-sync-external-store": {
+      "type": "npm",
+      "name": "npm:use-sync-external-store",
+      "data": {
+        "version": "1.2.0",
+        "packageName": "use-sync-external-store",
+        "hash": "sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA=="
+      }
+    },
     "npm:util-deprecate": {
       "type": "npm",
       "name": "npm:util-deprecate",
@@ -10384,6 +10393,15 @@
         "version": "3.22.4",
         "packageName": "zod",
         "hash": "sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg=="
+      }
+    },
+    "npm:zustand": {
+      "type": "npm",
+      "name": "npm:zustand",
+      "data": {
+        "version": "4.5.0",
+        "packageName": "zustand",
+        "hash": "sha512-zlVFqS5TQ21nwijjhJlx4f9iGrXSL0o/+Dpy4txAP22miJ8Ti6c1Ol1RLNN98BMib83lmDH/2KmLwaNXpjrO1A=="
       }
     }
   },
@@ -27286,6 +27304,11 @@
     {
       "source": "npm:yauzl",
       "target": "npm:fd-slicer",
+      "type": "static"
+    },
+    {
+      "source": "npm:zustand",
+      "target": "npm:use-sync-external-store",
       "type": "static"
     }
   ]
