@@ -1,10 +1,15 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { StyledComponentsRegistry, themeConfig } from '@skeleton/shared';
+import {
+  ReactQueryProvider,
+  StyledComponentsRegistry,
+  themeConfig
+} from '@skeleton/shared';
 import { ConfigProvider } from 'antd';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
+
 const inter = Inter({ subsets: ['latin'] });
 
 type Props = {
@@ -32,7 +37,7 @@ export default async function LocaleLayout({ children }: Props) {
                   ...themeConfig
                 }}
               >
-                {children}
+                <ReactQueryProvider>{children}</ReactQueryProvider>
               </ConfigProvider>
             </AntdRegistry>
           </StyledComponentsRegistry>

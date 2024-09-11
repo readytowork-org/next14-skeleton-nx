@@ -5,16 +5,15 @@ import { Result } from 'antd';
 import { useEffect } from 'react';
 
 export default function Error({
-  error,
-  reset
-}: {
+  error
+}: // reset
+{
   error: Error & { digest?: string };
-  reset: () => void;
+  // reset: () => void;
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
   }, [error]);
-  console.log(error);
   return (
     <Result
       status="500"
