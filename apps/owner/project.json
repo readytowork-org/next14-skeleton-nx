@@ -41,7 +41,8 @@
         },
         "development": {
           "dev": true,
-          "buildTarget": "owner:build:development"
+          "buildTarget": "owner:build:development",
+          "port": 3000
         }
       }
     },

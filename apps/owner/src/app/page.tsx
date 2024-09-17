@@ -1,5 +1,5 @@
+import { Button, Card } from '@skeleton/shared';
 import styles from './page.module.css';
-
 export default function Index() {
   /*
    * Replace the elements below with your own.
@@ -16,7 +16,8 @@ export default function Index() {
               Welcome owner 👋
             </h1>
           </div>
-
+          <Button>hello</Button>
+          <Card />
           <div id="hero" className="rounded">
             <div className="text-container">
               <h2>
