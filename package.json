@@ -5,11 +5,18 @@
   "scripts": {
     "bootstrap": "yarn install",
     "apps:owner": "nx run owner:dev",
-    "apps:build:owner": "nx run owner:build:production",
+    "apps:build:owner-dev": "nx run owner:build --configuration=development",
+    "apps:build:owner-prod": "nx run owner:build --configuration=production",
+    "apps:serve:owner-dev": "nx run owner:serve --configuration=development",
+    "apps:serve:owner-prod": "nx run owner:serve --configuration=production",
     "apps:typecheck:owner": "nx affected --target=typecheck",
-    "apps:consumer": "nx run consumer:dev",
-    "apps:build:consumer": "nx run consumer:build:production",
+
+    "apps:build:consumer-dev": "nx run consumer:build --configuration=development",
+    "apps:build:consumer-prod": "nx run consumer:build --configuration=production",
+    "apps:serve:consumer-dev": "nx run consumer:serve --configuration=development",
+    "apps:serve:consumer-prod": "nx run consumer:serve --configuration=production",
     "apps:typecheck:consumer": "nx affected --target=typecheck",
+
     "prepare": "husky install"
   },
   "private": true,
