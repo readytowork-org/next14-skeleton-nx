@@ -9,6 +9,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
+import { Provider } from '../lib/apollo-client';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,7 +38,9 @@ export default async function LocaleLayout({ children }: Props) {
                   ...themeConfig
                 }}
               >
-                <ReactQueryProvider>{children}</ReactQueryProvider>
+                <Provider>
+                  <ReactQueryProvider>{children}</ReactQueryProvider>
+                </Provider>
               </ConfigProvider>
             </AntdRegistry>
           </StyledComponentsRegistry>
