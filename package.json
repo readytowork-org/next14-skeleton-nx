@@ -10,7 +10,7 @@
     "apps:serve:owner-dev": "nx run owner:serve --configuration=development",
     "apps:serve:owner-prod": "nx run owner:serve --configuration=production",
     "apps:typecheck:owner": "nx affected --target=typecheck",
-
+    "apps:consumer": "nx run consumer:dev",
     "apps:build:consumer-dev": "nx run consumer:build --configuration=development",
     "apps:build:consumer-prod": "nx run consumer:build --configuration=production",
     "apps:serve:consumer-dev": "nx run consumer:serve --configuration=development",

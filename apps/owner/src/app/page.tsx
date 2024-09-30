@@ -1,4 +1,4 @@
-import { Card } from '@skeleton/shared';
+// import { Card } from '@skeleton/shared';
 export default function Index() {
   /*
    * Replace the elements below with your own.
@@ -7,14 +7,14 @@ export default function Index() {
    */
   return (
     <div>
-      <Card>
+      <div>
         <div id="welcome">
           <h1>
             <span> Hello there, </span>
             Welcome owner 👋
           </h1>
         </div>
-      </Card>
+      </div>
     </div>
   );
 }

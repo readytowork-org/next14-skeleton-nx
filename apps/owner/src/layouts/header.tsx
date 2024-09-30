@@ -17,7 +17,7 @@ import {
   Tooltip,
   theme
 } from 'antd';
-import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 const { Header } = Layout;
 
@@ -35,7 +35,7 @@ const HeaderNav = ({ collapsed, setCollapsed, isMobile }: HeaderNavProps) => {
   } = theme.useToken();
   const nodeRef = useRef(null);
   const [navFill, setNavFill] = useState(false);
-
+  const router = useRouter();
   const items: MenuProps['items'] = [
     {
       key: 'user-profile-link',
@@ -61,7 +61,8 @@ const HeaderNav = ({ collapsed, setCollapsed, isMobile }: HeaderNavProps) => {
       icon: <LogoutOutlined />,
       danger: true,
       onClick: () => {
-        signOut({ callbackUrl: '/login' });
+        router?.push('/login');
+        // signOut({ callbackUrl: '/login' });
       }
     }
   ];

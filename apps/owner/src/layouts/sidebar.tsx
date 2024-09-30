@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 'use client';
 import { IdcardOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { COLOR } from '@skeleton/shared';
+// import { COLOR } from '@skeleton/shared';
 import { ConfigProvider, Layout, Menu, MenuProps, SiderProps } from 'antd';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -87,10 +87,10 @@ const Sidebar = ({
         theme={{
           components: {
             Menu: {
-              itemBg: 'none',
-              itemSelectedBg: COLOR['100'],
-              itemHoverBg: COLOR['50'],
-              itemSelectedColor: COLOR['600']
+              itemBg: 'none'
+              // itemSelectedBg: COLOR['100'],
+              // itemHoverBg: COLOR['50'],
+              // itemSelectedColor: COLOR['600']
             }
           }
         }}

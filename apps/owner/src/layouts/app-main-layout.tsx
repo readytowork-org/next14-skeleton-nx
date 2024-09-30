@@ -1,5 +1,6 @@
 'use client';
 import { Layout, theme } from 'antd';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { FooterNav } from './footer';
@@ -11,13 +12,15 @@ const AppMainLayout = ({ children }: { children: React.ReactNode }) => {
   const {
     token: { borderRadius }
   } = theme.useToken();
-
+  const pathname = usePathname();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [collapsed, setCollapsed] = useState(false);
   useEffect(() => {
     setCollapsed(isMobile);
   }, [isMobile]);
-
+  if (pathname === '/login') {
+    return <>{children}</>;
+  }
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar
