@@ -16,7 +16,6 @@
     "apps:serve:consumer-dev": "nx run consumer:serve --configuration=development",
     "apps:serve:consumer-prod": "nx run consumer:serve --configuration=production",
     "apps:typecheck:consumer": "nx affected --target=typecheck",
-
     "prepare": "husky install"
   },
   "private": true,
@@ -37,7 +36,7 @@
     "i18next": "^23.15.1",
     "i18next-browser-languagedetector": "^8.0.0",
     "next": "14.2.3",
-    "next-auth": "5.0.0-beta.19",
+    "next-auth": "^5.0.0-beta.22",
     "nextjs-toploader": "^1.6.4",
     "react": "18.3.1",
     "react-countup": "^6.5.3",

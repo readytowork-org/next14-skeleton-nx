@@ -15,11 +15,12 @@ import {
   Typography,
   theme
 } from 'antd';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-const { Text, Title, Link } = Typography;
 
+const { Text, Title, Link } = Typography;
 type FieldType = {
   email?: string;
   password?: string;
@@ -120,7 +121,16 @@ export const Login = () => {
           >
             <Button icon={<GoogleOutlined />}>Sign in with Google</Button>
             <Button icon={<LineOutlined />}>Sign in with Line</Button>
-            <Button icon={<FacebookFilled />}>Sign in with Facebook</Button>
+            <Button
+              icon={<FacebookFilled />}
+              onClick={async () =>
+                signIn('facebook', {
+                  callbackUrl: window.location.origin
+                })
+              }
+            >
+              Sign in with Facebook
+            </Button>
           </Flex>
         </Flex>
       </Col>
