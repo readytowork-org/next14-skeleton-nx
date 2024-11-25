@@ -34,7 +34,7 @@ const FooterNav = ({
         </svg>
         by{' '}
         <a href="https://readytowork.jp/" target="_blank">
-          RWT
+          RWT(Ready To Work)
         </a>
       </p>
     </Footer>
