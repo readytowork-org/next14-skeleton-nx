@@ -1,29 +1,271 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@5.1.1
+  jira: circleci/jira@2.2.0
+  jq: circleci/jq@3.0.2
+  # for secondary image dependencies to google cloud sdk
+  node: circleci/node@7.0.0
+
 jobs:
-  main:
+  # Job for build for other branches
+  build:
     docker:
-      - image: cimg/node:lts-browsers
+      - image: cimg/node:20.11.0
+
+    working_directory: ~/next-skeleton
+
     steps:
       - checkout
-      # look for existing cache and restore if found
+
+      - run:
+          name: Checking the Node.js version
+          command: |
+            node --version
+
       - restore_cache:
-          key: npm-dependencies-{{ checksum "pnpm-lock.yaml" }}
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+
       - run:
-          name: install dependencies
-          command: pnpm install --frozen-lockfile
-      # save any changes to the cache
+          name: Initializing dependencies
+          command: |
+            yarn install
+
       - save_cache:
-          key: npm-dependencies-{{ checksum "pnpm-lock.yaml" }}
+          key: v1-npm-deps-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
-            - ~/.cache/Cypress # needed for the Cypress binary
+            - ./node_modules
+
       - run:
-          name: Run build
-          command: pnpm nx affected -t build
+          name: Build the app
+          command: |
+            unset CI
+            yarn build
+
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+          branch_pattern: 'develop'
+
+  # build and deploy to development
+  build_and_deploy_to_develop:
+    docker:
+      - image: google/cloud-sdk
+
+    working_directory: ~/next-skeleton
+
+    steps:
+      - checkout
+
+      - node/install:
+          install-yarn: true
+
+      - run:
+          name: Checking Node.JS version
+          command: |
+            node --version
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+
+      - run:
+          name: Initializing dependencies
+          command: |
+            yarn install
+
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Initializing the Environment variables
+          command: |
+            echo "NEXT_PUBLIC_FIREBASE_API_KEY=$NEXT_PUBLIC_FIREBASE_API_KEY
+            NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+            NEXT_PUBLIC_FIREBASE_PROJECT_ID=$NEXT_PUBLIC_FIREBASE_PROJECT_ID
+            NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+            NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID=$NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID
+            NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
+            NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+            NEXT_PUBLIC_APP_API_URL=$NEXT_PUBLIC_APP_API_URL
+            NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT" > .env
+
+      - run:
+          name: Authenticating and configuring the Google Cloud Platform
+          command: |
+            echo $GCLOUD_SERVICE_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
+
+      - run:
+          name: Build minanaodriver package
+          command: |
+            unset CI
+            yarn build
+
+      - run:
+          name: Deploy minananodriver package
+          command: |
+            gcloud app deploy app.yaml --project ${GCLOUD_PROJECT_ID} --quiet
+
+      - run:
+          name: Delete Old versions of App Engine
+          command: |
+            versions=$(gcloud app versions list \
+              --service default \
+              --sort-by '~VERSION.ID' \
+              --format 'value(VERSION.ID)' | sed 1,3d)
+            for version in $versions; do
+              gcloud app versions delete "$version" \
+                --service default \
+                --quiet
+            done
+
+      - slack/notify:
+          event: pass
+          template: basic_success_1
+
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+      - jq/install
+
+      - jira/notify:
+          environment: development
+          environment_type: development
+          job_type: deployment
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
+
+    resource_class: medium
+
+  # build and deploy to production
+  build_and_deploy_to_production:
+    docker:
+      - image: google/cloud-sdk
+
+    working_directory: ~/next-skeleton
+
+    steps:
+      - checkout
+
+      - node/install:
+          install-yarn: true
+
+      - run:
+          name: Checking Node.JS version
+          command: |
+            node --version
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+
+      - run:
+          name: Initializing dependencies
+          command: |
+            yarn install
+
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Initializing the Environment variables
+          command: |
+            echo "NEXT_PUBLIC_FIREBASE_API_KEY=$NEXT_PUBLIC_FIREBASE_API_KEY
+            NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+            NEXT_PUBLIC_FIREBASE_PROJECT_ID=$NEXT_PUBLIC_FIREBASE_PROJECT_ID
+            NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+            NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID=$NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID
+            NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
+            NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+            NEXT_PUBLIC_APP_API_URL=$NEXT_PUBLIC_APP_API_URL
+            NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT" > .env
+
+      - run:
+          name: Authenticating and configuring the Google Cloud Platform
+          command: |
+            echo $GCLOUD_SERVICE_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCLOUD_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
+
+      - run:
+          name: Build minananodriver cms package
+          command: |
+            unset CI
+            yarn build
+
+      - run:
+          name: Deploy minnanodriver cms package
+          command: |
+            gcloud app deploy app.yaml --project ${GCLOUD_PROJECT_ID} --quiet
+
+      - run:
+          name: Delete Old versions of App Engine
+          command: |
+            versions=$(gcloud app versions list \
+              --service default \
+              --sort-by '~VERSION.ID' \
+              --format 'value(VERSION.ID)' | sed 1,3d)
+            for version in $versions; do
+              gcloud app versions delete "$version" \
+                --service default \
+                --quiet
+            done
+
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
+
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+      - jq/install
+
+      - jira/notify:
+          environment: production
+          environment_type: production
+          job_type: deployment
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
+
+    resource_class: medium
 
 workflows:
-  version: 2
-  ci:
+  build-workflow:
     jobs:
-      - main
+      - build:
+          context: minnano_driver_dev
+          filters:
+            branches:
+              only:
+                - /MIN-.*/
+                - circleci
+
+      - build_and_deploy_to_develop:
+          context: minnano_driver_dev
+          filters:
+            branches:
+              only:
+                - develop
+                - circleci
+
+      - build_and_deploy_to_production:
+          context: minnano_driver
+          filters:
+            tags:
+              only:
+                - /v[0-9].*/
+            branches:
+              ignore:
+                - /.*/
