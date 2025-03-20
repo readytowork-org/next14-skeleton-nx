@@ -4,7 +4,7 @@ import { generateApi } from "swagger-typescript-api";
 
 generateApi({
   // set to `false` to prevent the tool from writing to disk
-  output: path.resolve(process.cwd(), "./src/services"),
+  output: path.resolve(process.cwd(), "./shared/src/services"),
   url: `${process.env.NEXT_PUBLIC_APP_API_URL}/swagger/doc.json`,
   httpClientType: "axios", // or "fetch"
   toJS: false,
@@ -78,7 +78,7 @@ generateApi({
       })
       .join("\n")}\n`;
 
-    const indexFile = path.resolve(process.cwd(), "./src/services/index.ts");
+    const indexFile = path.resolve(process.cwd(), "./shared/src/services/index.ts");
     fs.writeFileSync(indexFile, `${_importsContent}${_servicesCreation}`);
   })
   // eslint-disable-next-line no-console
