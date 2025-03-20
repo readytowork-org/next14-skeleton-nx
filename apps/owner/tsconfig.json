@@ -16,10 +16,11 @@
         "name": "next"
       }
     ],
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"],
+    "paths": {
+      "@/*": ["./apps/owner/src/*"],
+      "@/shared/*": ["./shared/src/*"]
+    }
   },
   "include": [
     "**/*.ts",
@@ -29,13 +30,7 @@
     "../../apps/owner/.next/types/**/*.ts",
     "../../dist/apps/owner/.next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "../../build/apps/owner/.next/types/**/*.ts"
+    ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

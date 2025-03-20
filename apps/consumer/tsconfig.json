@@ -16,25 +16,23 @@
         "name": "next"
       }
     ],
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"],
+    "paths": {
+      "@/*": ["./apps/company/src/*"],
+      "@/shared/*": ["./shared/src/*"]
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "../../apps/consumer/.next/types/**/*.ts",
-    "../../dist/apps/consumer/.next/types/**/*.ts",
+    "../../apps/company/.next/types/**/*.ts",
+    "../../dist/apps/company/.next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../shared/src/utils/toTitleCase.ts",
+    "../../shared/src/utils/hook/NotificationContext.tsx"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

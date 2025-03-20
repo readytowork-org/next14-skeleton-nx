@@ -14,10 +14,6 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@skeleton/shared": ["shared/src/index.ts"],
-      "@skeleton/shared/server": ["shared/src/server.ts"]
-    },
     "resolveJsonModule": true
   },
   "exclude": ["node_modules", "tmp"]
