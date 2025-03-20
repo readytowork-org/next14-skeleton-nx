@@ -3,6 +3,7 @@
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
 export interface ThemeConfigStore {
   direction: 'ltr' | 'rtl';
   colorScheme: 'dark' | 'light';
@@ -11,9 +12,10 @@ export interface ThemeConfigStore {
   setColorScheme: (colorScheme: any) => void;
   setLocale: (locale: string) => void;
 }
+
 export const globalThemeStore = create<ThemeConfigStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       direction: 'ltr',
       colorScheme: 'light',
       locale: 'en',
