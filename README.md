@@ -34,6 +34,12 @@
 
 This nextjs_skeletin template has a bunch of folders, code examples, and configurations. Feel free to edit or remove them, including this README!
 
+Furthermore, we are using MUI components and theme config to manage its look and feel, 
+
+Initial theme configs are available in [mui-theme-config](https://github.com/readytowork-org/mui-theme-config) as well as Some basic Reusable components, do check it out.
+
+## Running The Project
+
 ## 📖 Conventions
 
 Folder Name 👉 Kebab case <br/>
