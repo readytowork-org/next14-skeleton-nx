@@ -72,7 +72,7 @@ See below the file tree to understand the project structure.
 │   ├── index.d.ts
 │   ├── jest.config.ts
 │   ├── next-env.d.ts
-│   ├── next.config.js
+│   ├── next.config.ts
 │   ├── project.json
 │   ├── public
 │   │   └── favicon.ico
@@ -93,7 +93,7 @@ See below the file tree to understand the project structure.
     ├── index.d.ts
     ├── jest.config.ts
     ├── next-env.d.ts
-    ├── next.config.js
+    ├── next.config.ts
     ├── project.json
     ├── public
     │   └── favicon.ico
