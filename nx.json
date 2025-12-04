@@ -71,6 +71,6 @@
       "options": {
         "targetName": "eslint:lint"
       }
-    },
+    }
   ]
 }
